@@ -95,7 +95,7 @@ As in the above minimal set-up template, this add-on provides the two scopes `{{
 | `{{ url }}`                  | `{{ items }}`    | Link to the post                                                              |
 | `{{ date }}`                 | `{{ items }}`    | Date and time when the post was made                                          |
 | `{{ original_poster }}`      | `{{ items }}`    | The handle of the poster to whom this post was in reply, quoting or reposting |
-| `{{ images }}`               | `{{ items }}`    | Block/scope for displaying images (No images are shown by default)            |
+| `{{ images }}`               | `{{ items }}`    | Block/scope for displaying images (no images are shown by default)            |
 | `{{ thumb }}`                | `{{ images }}`   | URL of the image                                                              |
 | `{{ alt }}`                  | `{{ images }}`   | Alt text of the image                                                         |
 | `{{ external }}`             | `{{ items }}`    | Block/scope for displaying external links                                     |

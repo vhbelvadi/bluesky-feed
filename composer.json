@@ -1,5 +1,13 @@
 {
     "name": "vhbelvadi/bluesky-feed",
+    "description": "Display recent Bluesky posts on a Statamic website",
+    "keywords": [
+        "statamic",
+        "bluesky",
+        "feed",
+        "tag"
+    ],
+	"type": "statamic-addon",
     "autoload": {
         "psr-4": {
             "Vhbelvadi\\BlueskyFeed\\": "src"
