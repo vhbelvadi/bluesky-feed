@@ -176,11 +176,11 @@ The following template assumes you have options set in your `.env` file and show
 {{ /bluesky }}
 ```
 
-**Observations.** Showing a tick for a verified post, 
+**Observations.** Showing a tick for a verified post, this template shows images if they exist and external link details if those exist, along with a few small tweaks. Note that copying and pasting this template might not order the information in the best possible manner, but is a good start to customising things in a way you might want them to look.
 
 ## Up next
 
-None of the exmaple templates above show any styles. This is intentional, so the templating itself is clear. A minimally styled example can be found [on my website](http://vhbelvadi.com.test/bluesky-feed).
+None of the example templates above show any styles. This is intentional, so the templating itself is clear. A minimally styled example can be found [on my website](http://vhbelvadi.com.test/bluesky-feed).
 
 If you have ideas or wish to propose features for this add-on, *please submit a pull request.*
 
