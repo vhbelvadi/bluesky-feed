@@ -5,7 +5,7 @@ Bluesky is a social media website built on the Authenticated Transfer Protocol (
 This add-on lets you fetch the latest posts from a Bluesky account – the Bluesky feed of that account – and display it on your Statamic-powered website.
 
 ***
-**Jump to:** [Features](https://github.com/vhbelvadi/bluesky-feed#features) • [Installation and removal](https://github.com/vhbelvadi/bluesky-feed#installation-and-features) • [Set-up and customisation](https://github.com/vhbelvadi/bluesky-feed#set-u-and-customisation) • [Customisation options](https://github.com/vhbelvadi/bluesky-feed#customisation--options) • [Customisation tags](https://github.com/vhbelvadi/bluesky-feed#customisation--tags) • [Examples](https://github.com/vhbelvadi/bluesky-feed#examples) • [Up next](https://github.com/vhbelvadi/bluesky-feed#up-next)
+**Jump to:** [Features](https://github.com/vhbelvadi/bluesky-feed#features) • [Installation and removal](https://github.com/vhbelvadi/bluesky-feed#installation-and-features) • [Set-up and customisation](https://github.com/vhbelvadi/bluesky-feed#set-u-and-customisation) • [Customisation options](https://github.com/vhbelvadi/bluesky-feed#customisation--options) • [Customisation tags](https://github.com/vhbelvadi/bluesky-feed#customisation--tags) • [Edge cases](https://github.com/vhbelvadi/bluesky-feed#edge-cases) • [Examples](https://github.com/vhbelvadi/bluesky-feed#examples) • [Up next](https://github.com/vhbelvadi/bluesky-feed#up-next)
 ***
 
 ## Features
@@ -82,6 +82,8 @@ This add-on provides a number of useful options best presented in a glanceable t
 | replies    | `true`      | `true` `false`       | Include replies in the feed?                                   |
 | images     | `true`      | `true` `false`       | Fetch and prepare images? (see tags below)                     |
 | external   | `true`      | `true` `false`       | Fetch and prepare external links? (see tags below)             |
+| only_posts | `false`	   | `true` `false`       | Only show original posts, no reposts, replies or quotes        |
+| boost      | `false`     | `true` `false`       | See [edge cases](https://github.com/vhbelvadi/bluesky-feed#edge-cases) |
 
 The options displayed above are to be set within templates. But in each case an option `foo` can also be set in the `.env` file as `BLUESKY_FOO` as well. It is recommended, unless you prefer to set up multiple different feeds, that you set your options in your `.env` file to make both options and templates simpler.
 
@@ -110,6 +112,12 @@ As in the above minimal set-up template, this add-on provides the two scopes `{{
 <sup>*</sup> Since Bluesky does not allow API-led follow buttons (yet), this is the next best thing.
 
 For more about these tags, please see the example templates in the next section.
+
+### Edge cases
+
+Sometimes specifying `replies="false"` or `only_posts="true"` (or their equivalent `.env` options) will fetch fewer posts than is specified in the `limit` or `BLUESKY_LIMIT` option.
+
+In v1.1 a new `boost` option and its equivalent `.env` option `BLUESKY_BOOST` were introduced to fix this edge case. Set `boost="true"` in your template or `BLUESKY_BOOST="true"` in your `.env` file (it is `false` by default) to activate this automatic edge case fix.
 
 ## Examples
 
