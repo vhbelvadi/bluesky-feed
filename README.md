@@ -4,6 +4,10 @@ Bluesky is a social media website built on the Authenticated Transfer Protocol (
 
 This add-on lets you fetch the latest posts from a Bluesky account – the Bluesky feed of that account – and display it on your Statamic-powered website.
 
+***
+**Jump to:** [Features](https://github.com/vhbelvadi/bluesky-feed#features) • [Installation and removal](https://github.com/vhbelvadi/bluesky-feed#installation-and-features) • [Set-up and customisation](https://github.com/vhbelvadi/bluesky-feed#set-u-and-customisation) • [Customisation options](https://github.com/vhbelvadi/bluesky-feed#customisation--options) • [Customisation tags](https://github.com/vhbelvadi/bluesky-feed#customisation--tags) • [Examples](https://github.com/vhbelvadi/bluesky-feed#examples) • [Up next](https://github.com/vhbelvadi/bluesky-feed#up-next)
+***
+
 ## Features
 
 - Fetch from one Bluesky account site-wide or from multiple Bluesky accounts across different instances of this add-on
@@ -106,6 +110,8 @@ As in the above minimal set-up template, this add-on provides the two scopes `{{
 <sup>*</sup> Since Bluesky does not allow API-led follow buttons (yet), this is the next best thing.
 
 For more about these tags, please see the example templates in the next section.
+
+## Examples
 
 #### Simple example template
 
