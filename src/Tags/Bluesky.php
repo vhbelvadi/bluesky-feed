@@ -30,7 +30,7 @@ class Bluesky extends Tags
             FILTER_VALIDATE_BOOLEAN,
         );
         $defaultOnlyPosts = filter_var(
-            env("BLUESKY_POSTS", false),
+            env("BLUESKY_ONLY_POSTS", false),
             FILTER_VALIDATE_BOOLEAN,
         );
 
