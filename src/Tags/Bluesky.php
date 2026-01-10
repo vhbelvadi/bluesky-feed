@@ -98,9 +98,17 @@ class Bluesky extends Tags
         bool $allowExternal,
         bool $onlyPosts = false,
     ): array {
-        // Increase fetch limit if replies are disabled or only_posts is true
-        $fetchLimit =
-            $allowReplies && !$onlyPosts ? $limit : min($limit * 10, 100);
+        // Increase fetch limit if replies are disabled or only_posts is true, further boost if this is not fetching enough posts to cover the specified limit
+        $boost =
+            filter_var(env("BLUESKY_BOOST", false), FILTER_VALIDATE_BOOLEAN) ||
+            filter_var(
+                $this->params->get("boost", false),
+                FILTER_VALIDATE_BOOLEAN,
+            );
+
+        $maxLimit = $boost ? min($limit * 50, 500) : min($limit * 10, 100);
+
+        $fetchLimit = $allowReplies && !$onlyPosts ? $limit : $maxLimit;
 
         // Fetch feed and profile together for caching
         $feedResponse = Http::get(
