@@ -180,7 +180,7 @@ The following template assumes you have options set in your `.env` file and show
 
 ## Up next
 
-<!-- None of the exmaple templates above show any styles. This is intentional, so the templating itself is clear. A minimally styled example can be found on my website: -->
+None of the exmaple templates above show any styles. This is intentional, so the templating itself is clear. A minimally styled example can be found [on my website](http://vhbelvadi.com.test/bluesky-feed).
 
 If you have ideas or wish to propose features for this add-on, *please submit a pull request.*
 
