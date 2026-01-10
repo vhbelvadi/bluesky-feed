@@ -1,0 +1,37 @@
+{
+    "name": "vhbelvadi/bluesky-feed",
+    "autoload": {
+        "psr-4": {
+            "Vhbelvadi\\BlueskyFeed\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vhbelvadi\\BlueskyFeed\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "statamic/cms": "^5.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "pixelfear/composer-dist-plugin": true
+        }
+    },
+    "extra": {
+        "statamic": {
+            "name": "Bluesky Feed",
+            "description": "Display recent Bluesky posts on a Statamic website"
+        },
+        "laravel": {
+            "providers": [
+                "Vhbelvadi\\BlueskyFeed\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
