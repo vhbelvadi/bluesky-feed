@@ -1,4 +1,4 @@
-# Bluesky Feed
+# Bluesky feed for Statamic websites
 
 Bluesky is a social media website built on the Authenticated Transfer Protocol (Atproto), a decentralized protocol for large-scale social web applications. In the spirit of an open web where users keep control of their data, Atproto-based apps like Bluesky lets users have permanent decentralized identifiers (DIDs) for their accounts. Users can also own their data by [hosting their own PDS](https://vhbelvadi.com/bluesky-atproto-pds).
 
