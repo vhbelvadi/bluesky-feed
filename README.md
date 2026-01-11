@@ -116,7 +116,9 @@ As in the above minimal set-up template, this add-on provides the two scopes `{{
 | `{{ original_date }}`        | `{{ items }}`    | Displays the date of a quoted post                                            |
 | `{{ original_image }}`       | `{{ items }}`    | Displays the image belonging to a quoted post                                 |
 
-<sup>*</sup> Since Bluesky does not allow API-led follow buttons (yet), this is the next best thing.
+<sup>*</sup>Since Bluesky does not allow API-led follow buttons (yet), this is the next best thing.
+
+**NB** The `{{ original_poster }}` tag has `{{ original_handle }}` as an alias.
 
 For more about these tags, please see the example templates in the next section.
 
