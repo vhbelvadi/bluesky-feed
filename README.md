@@ -97,9 +97,12 @@ As in the above minimal set-up template, this add-on provides the two scopes `{{
 | `{{ count }}`                | `{{ bluesky }}`  | Displays the limit                                                            |
 | `{{ follow_url }}`           | `{{ bluesky }}`  | Displays a link to the Bluesky profile<sup>*</sup>                            |
 | `{{ verified }}`             | `{{ bluesky }}`  | Is `true` for verified accounts                                               |
+| `{{ name }}`                 | `{{ bluesky }}`  | Displays the account name                                                     |
+| `{{ description }}`          | `{{ bluesky }}`  | Displays the profile bio                                                      |
+| `{{ text }}`                 | `{{ items }}`    | Displays the original or reposted post content                                |
 | `{{ type }}`                 | `{{ items }}`    | Returns `post`, `repost`, `reply` or `quote` type                             |
 | `{{ url }}`                  | `{{ items }}`    | Link to the post                                                              |
-| `{{ date }}`                 | `{{ items }}`    | Date and time when the post was made                                          |
+| `{{ date }}`                 | `{{ items }}`    | Date and time when an original or reposted post was made                      |
 | `{{ original_poster }}`      | `{{ items }}`    | The handle of the poster to whom this post was in reply, quoting or reposting |
 | `{{ images }}`               | `{{ items }}`    | Block/scope for displaying images (no images are shown by default)            |
 | `{{ thumb }}`                | `{{ images }}`   | URL of the image                                                              |
@@ -108,6 +111,10 @@ As in the above minimal set-up template, this add-on provides the two scopes `{{
 | `{{ external:url }}`         | `{{ external }}` | URL to the external page                                                      |
 | `{{ external:title }}`       | `{{ external }}` | Title of the external page                                                    |
 | `{{ external:description }}` | `{{ external }}` | Description of the external page                                              |
+| `{{ original_text }}`        | `{{ items }}`    | Displays the content belonging to a quoted post                               |
+| `{{ original_avatar }}`      | `{{ items }}`    | Displays the avatar belonging to a quoted post                                |
+| `{{ original_date }}`        | `{{ items }}`    | Displays the date of a quoted post                                            |
+| `{{ original_image }}`       | `{{ items }}`    | Displays the image belonging to a quoted post                                 |
 
 <sup>*</sup> Since Bluesky does not allow API-led follow buttons (yet), this is the next best thing.
 
