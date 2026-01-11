@@ -86,6 +86,9 @@ class Bluesky extends Tags
             "handle" => $handle,
             "count" => count($feed["items"]),
             "verified" => $feed["verified"],
+            "name" => $feed["name"],
+            "description" => $feed["description"],
+            "avatar" => $feed["avatar"],
             "follow_url" => "https://bsky.app/profile/{$handle}",
         ];
     }
@@ -98,7 +101,6 @@ class Bluesky extends Tags
         bool $allowExternal,
         bool $onlyPosts = false,
     ): array {
-        // Increase fetch limit if replies are disabled or only_posts is true, further boost if this is not fetching enough posts to cover the specified limit
         $boost =
             filter_var(env("BLUESKY_BOOST", false), FILTER_VALIDATE_BOOLEAN) ||
             filter_var(
@@ -110,7 +112,6 @@ class Bluesky extends Tags
 
         $fetchLimit = $allowReplies && !$onlyPosts ? $limit : $maxLimit;
 
-        // Fetch feed and profile together for caching
         $feedResponse = Http::get(
             "https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed",
             ["actor" => $handle, "limit" => $fetchLimit],
@@ -125,6 +126,9 @@ class Bluesky extends Tags
             return [
                 "items" => [],
                 "verified" => false,
+                "name" => null,
+                "description" => null,
+                "avatar" => null,
                 "follow_link" => "https://bsky.app/profile/{$handle}",
             ];
         }
@@ -134,9 +138,12 @@ class Bluesky extends Tags
             ? $profileResponse->json()
             : [];
 
-        // VERIFIED badge detection (profile-level)
         $verified =
             ($profile["verification"]["verifiedStatus"] ?? null) === "valid";
+
+        $name = $profile["displayName"] ?? null;
+        $description = $profile["description"] ?? null;
+        $avatar = $profile["avatar"] ?? null;
 
         $items = collect($feed)
             ->map(function ($item) use (
@@ -155,6 +162,11 @@ class Bluesky extends Tags
                 $type = "post";
                 $text = $record["text"] ?? null;
                 $originalPoster = null;
+                $originalName = null;
+                $originalText = null;
+                $originalAvatar = null;
+                $originalDate = null;
+                $originalImage = null;
                 $images = [];
                 $external = null;
 
@@ -165,6 +177,19 @@ class Bluesky extends Tags
                 ) {
                     $type = "repost";
                     $originalPoster = $postView["author"]["handle"] ?? null;
+                    $originalName = $postView["author"]["displayName"] ?? null;
+                    $originalAvatar = $postView["author"]["avatar"] ?? null;
+                    $originalText =
+                        $embedView["record"]["value"]["text"] ?? null;
+                    $originalDate =
+                        $embedView["record"]["value"]["createdAt"] ?? null;
+
+                    if (isset($embedView["record"]["embeds"][0]["images"][0])) {
+                        $originalImage =
+                            $embedView["record"]["embeds"][0]["images"][0][
+                                "fullsize"
+                            ] ?? null;
+                    }
                 }
                 // REPLY
                 elseif (isset($replyView["parent"]["author"]["handle"])) {
@@ -182,9 +207,23 @@ class Bluesky extends Tags
                     $type = "quote";
                     $originalPoster =
                         $embedView["record"]["author"]["handle"] ?? null;
-                    $text =
-                        $record["text"] ??
-                        ($embedView["record"]["value"]["text"] ?? $text);
+                    $originalName =
+                        $embedView["record"]["author"]["displayName"] ?? null;
+                    $originalAvatar =
+                        $embedView["record"]["author"]["avatar"] ?? null;
+                    $originalText =
+                        $embedView["record"]["value"]["text"] ?? null;
+                    $originalDate =
+                        $embedView["record"]["value"]["createdAt"] ?? null;
+
+                    if (isset($embedView["record"]["embeds"][0]["images"][0])) {
+                        $originalImage =
+                            $embedView["record"]["embeds"][0]["images"][0][
+                                "fullsize"
+                            ] ?? null;
+                    }
+
+                    $text = $record["text"] ?? ($originalText ?? $text);
                 }
 
                 // IMAGES
@@ -242,22 +281,26 @@ class Bluesky extends Tags
                     ];
                 }
 
-                // Filter out replies if not allowed
                 if (!$allowReplies && $type === "reply") {
                     return null;
                 }
 
-                // Filter out anything that isn’t a post if only_posts is true
                 if ($onlyPosts && $type !== "post") {
                     return null;
                 }
 
                 return [
                     "text" => $text,
+                    "original_text" => $originalText,
+                    "original_name" => $originalName,
+                    "original_avatar" => $originalAvatar,
+                    "original_date" => $originalDate,
+                    "original_image" => $originalImage,
                     "url" => $this->uriToUrl($postView["uri"] ?? ""),
                     "date" => $record["createdAt"] ?? null,
                     "type" => $type,
                     "original_poster" => $originalPoster,
+                    "original_handle" => $originalPoster,
                     "images" => $images,
                     "external" => $external,
                     "follow_link" => "https://bsky.app/profile/{$handle}",
@@ -271,6 +314,9 @@ class Bluesky extends Tags
         return [
             "items" => $items,
             "verified" => $verified,
+            "name" => $name,
+            "description" => $description,
+            "avatar" => $avatar,
         ];
     }
 
