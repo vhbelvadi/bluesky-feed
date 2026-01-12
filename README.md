@@ -106,28 +106,28 @@ As in the above minimal set-up template, this add-on provides the two scopes `{{
 | `{{ type }}`                 | `{{ items }}`    | Returns `post`, `repost`, `reply` or `quote` type                             |
 | `{{ url }}`                  | `{{ items }}`    | Link to the post                                                              |
 | `{{ date }}`                 | `{{ items }}`    | Date and time when an original or reposted post was made                      |
-| `{{ original_poster }}`      | `{{ items }}`    | The handle of the poster to whom this post was in reply, quoting or reposting |
+| `{{ original:poster }}`      | `{{ items }}`    | The handle of the poster to whom this post was in reply, quoting or reposting |
 | `{{ images }}`               | `{{ items }}`    | Block/scope for displaying images (no images are shown by default)            |
-| `{{ thumb }}`                | `{{ images }}`   | URL of the image                                                              |
+| `{{ thumb }}`                | `{{ images }}`   | URL of the image in original posts and reposts                                                              |
 | `{{ alt }}`                  | `{{ images }}`   | Alt text of the image                                                         |
 | `{{ external }}`             | `{{ items }}`    | Block/scope for displaying external links                                     |
 | `{{ external:url }}`         | `{{ external }}` | URL to the external page                                                      |
 | `{{ external:title }}`       | `{{ external }}` | Title of the external page                                                    |
 | `{{ external:description }}` | `{{ external }}` | Description of the external page                                              |
-| `{{ original_text }}`        | `{{ items }}`    | Displays the content belonging to a quoted post                               |
-| `{{ original_avatar }}`      | `{{ items }}`    | Displays the avatar belonging to a quoted post                                |
-| `{{ original_date }}`        | `{{ items }}`    | Displays the date of a quoted post                                            |
-| `{{ original_image }}`       | `{{ items }}`    | Displays the image belonging to a quoted post                                 |
+| `{{ original:text }}`        | `{{ items }}`    | Displays the content belonging to a quoted post                               |
+| `{{ original:avatar }}`      | `{{ items }}`    | Displays the avatar belonging to a quoted post                                |
+| `{{ original:date }}`        | `{{ items }}`    | Displays the date of a quoted post                                            |
+| `{{ original:thumb }}`       | `{{ items }}`    | Displays the image belonging to a quoted post                                 |
 
 <sup>*</sup>Since Bluesky does not allow API-led follow buttons (yet), this is the next best thing.
 
-**NB** The `{{ original_poster }}` tag has `{{ original_handle }}` as an alias.
+**NB** The `{{ original:poster }}` tag has `{{ original:handle }}` as an alias.
 
 For more about these tags, please see the example templates in the next section.
 
 ### Edge cases
 
-**Images in reposts of quoted posts.** Images in reposts work as expected using the `{{ thumb }}` tag, and images in quoted posts work with the `{{ original_image }}` tag. Images in external links also work, using `{{ external:thumb }}` but images in reposts of quoted posts are, at this time, not handed over by the Bluesky API.
+**Images in reposts of quoted posts.** Images in reposts work as expected using the `{{ thumb }}` tag, and images in quoted posts work with the `{{ original:thumb }}` tag. Images in external links also work, using `{{ external:thumb }}` but images in reposts of quoted posts are, at this time, not handed over by the Bluesky API.
 
 **Limiting replies or only posts.** Sometimes specifying `replies="false"` or `only_posts="true"` (or their equivalent `.env` options) will fetch fewer posts than is specified in the `limit` or `BLUESKY_LIMIT` option.
 
@@ -175,9 +175,9 @@ The following template assumes you have options set in your `.env` file and show
       <small>{{ date }}</small>
       {{ type }}
 
-      {{ if original_poster }}
+      {{ if original:poster }}
         <small class="block">
-            {{ type }} to {{ original_poster }}
+            {{ type }} to {{ original:poster }}
         </small>
       {{ /if }}
 
