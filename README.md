@@ -1,8 +1,10 @@
 # Bluesky feed for Statamic websites
 
-Bluesky is a social media website built on the Authenticated Transfer Protocol (Atproto), a decentralized protocol for large-scale social web applications. In the spirit of an open web where users keep control of their data, Atproto-based apps like Bluesky lets users have permanent decentralized identifiers (DIDs) for their accounts. Users can also own their data by [hosting their own PDS](https://vhbelvadi.com/bluesky-atproto-pds).
+Bluesky is a social media website built on the Authenticated Transfer Protocol (Atproto), a decentralized protocol for large-scale social web applications. In the spirit of an open web where users keep control of their data, Atproto-based apps like Bluesky allow users permanent decentralized identifiers (DIDs) for their accounts which preserves their social graphs independent of the social platforms (app views) on which they engage. Users can further own their data by [hosting their own PDS](https://vhbelvadi.com/bluesky-atproto-pds).
 
-This add-on lets you fetch the latest posts from a Bluesky account – the Bluesky feed of that account – and display it on your Statamic-powered website.
+**This add-on lets you fetch the latest posts from a Bluesky account – the Bluesky feed of that account – and display it on your Statamic-powered website.** It fetches data from Bluesky and prepares a number of antlers tags for use in your templates, which you can use as simply (plain text) or extensively (replicating the Bluesky feed) as you prefer. Note that all styling is up to you, so you can make it look almost exactly like Bluesky itself or, better yet, make it harmoious with your own website.
+
+### [View live demo &rarr;](https://vhbelvadi.com/bluesky-feed)
 
 ***
 **Jump to:** [Features](https://github.com/vhbelvadi/bluesky-feed#features) • [Installation and removal](https://github.com/vhbelvadi/bluesky-feed#installation-and-features) • [Set-up and customisation](https://github.com/vhbelvadi/bluesky-feed#set-u-and-customisation) • [Customisation options](https://github.com/vhbelvadi/bluesky-feed#customisation--options) • [Customisation tags](https://github.com/vhbelvadi/bluesky-feed#customisation--tags) • [Edge cases](https://github.com/vhbelvadi/bluesky-feed#edge-cases) • [Examples](https://github.com/vhbelvadi/bluesky-feed#examples) • [Up next](https://github.com/vhbelvadi/bluesky-feed#up-next)
