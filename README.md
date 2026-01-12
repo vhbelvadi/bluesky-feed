@@ -1,3 +1,5 @@
+![](https://statamic.com/storage/products/lwknF2HChIqDJhUVw53onfL7gvFNRtbNtO20ZjwJ.jpg)
+
 # Bluesky feed for Statamic websites
 
 ## Fetch posts from a Bluesky account, customise and display them on your Statamic website
