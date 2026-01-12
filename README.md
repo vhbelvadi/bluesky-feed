@@ -127,7 +127,9 @@ For more about these tags, please see the example templates in the next section.
 
 ### Edge cases
 
-Sometimes specifying `replies="false"` or `only_posts="true"` (or their equivalent `.env` options) will fetch fewer posts than is specified in the `limit` or `BLUESKY_LIMIT` option.
+**Images in reposts of quoted posts.** Images in reposts work as expected using the `{{ thumb }}` tag, and images in quoted posts work with the `{{ original_image }}` tag. Images in external links also work, using `{{ external:thumb }}` but images in reposts of quoted posts are, at this time, not handed over by the Bluesky API.
+
+**Limiting replies or only posts.** Sometimes specifying `replies="false"` or `only_posts="true"` (or their equivalent `.env` options) will fetch fewer posts than is specified in the `limit` or `BLUESKY_LIMIT` option.
 
 In v1.1 a new `boost` option and its equivalent `.env` option `BLUESKY_BOOST` were introduced to fix this edge case. Set `boost="true"` in your template or `BLUESKY_BOOST="true"` in your `.env` file (it is `false` by default) to activate this automatic edge case fix.
 

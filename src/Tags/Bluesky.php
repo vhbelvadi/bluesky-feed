@@ -294,18 +294,31 @@ class Bluesky extends Tags
                     return null;
                 }
 
+                // --- NEW: original: namespace ---
+                $original = [
+                    "poster" => $originalPoster,
+                    "handle" => $originalPoster,
+                    "name" => $originalName,
+                    "text" => $originalText,
+                    "avatar" => $originalAvatar,
+                    "date" => $originalDate,
+                    "image" => $originalImage, // legacy fallback
+                    "thumb" => $originalImage ?? null, // maps image -> thumb
+                ];
+
                 return [
                     "text" => $text,
-                    "original_text" => $originalText,
-                    "original_name" => $originalName,
-                    "original_avatar" => $originalAvatar,
-                    "original_date" => $originalDate,
-                    "original_image" => $originalImage,
+                    "original_text" => $originalText, // legacy
+                    "original_name" => $originalName, // legacy
+                    "original_avatar" => $originalAvatar, // legacy
+                    "original_date" => $originalDate, // legacy
+                    "original_image" => $originalImage, // legacy
+                    "original" => $original, // new namespace
                     "url" => $this->uriToUrl($postView["uri"] ?? ""),
                     "date" => $record["createdAt"] ?? null,
                     "type" => $type,
-                    "original_poster" => $originalPoster,
-                    "original_handle" => $originalPoster,
+                    "original_poster" => $originalPoster, // legacy
+                    "original_handle" => $originalPoster, // legacy
                     "images" => $images,
                     "external" => $external,
                     "follow_link" => "https://bsky.app/profile/{$handle}",
