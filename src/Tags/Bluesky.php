@@ -160,7 +160,12 @@ class Bluesky extends Tags
                 $reason = $item["reason"] ?? null;
 
                 $type = "post";
-                $text = $record["text"] ?? null;
+                $text = isset($record["text"])
+                    ? $this->applyFacetsToText(
+                        $record["text"],
+                        $record["facets"] ?? [],
+                    )
+                    : null;
                 $originalPoster = null;
                 $originalName = null;
                 $originalText = null;
@@ -329,5 +334,57 @@ class Bluesky extends Tags
             $parts[2] ?? "",
             end($parts),
         );
+    }
+
+    protected function applyFacetsToText(string $text, array $facets): string
+    {
+        if (empty($facets)) {
+            return $text;
+        }
+
+        $bytes = mb_convert_encoding($text, "UTF-8");
+        $replacements = [];
+
+        foreach ($facets as $facet) {
+            if (
+                empty($facet["index"]["byteStart"]) ||
+                empty($facet["index"]["byteEnd"]) ||
+                empty($facet["features"])
+            ) {
+                continue;
+            }
+
+            foreach ($facet["features"] as $feature) {
+                if (
+                    ($feature['$type'] ?? null) ===
+                    "app.bsky.richtext.facet#link"
+                ) {
+                    $start = $facet["index"]["byteStart"];
+                    $end = $facet["index"]["byteEnd"];
+
+                    $label = mb_strcut($bytes, $start, $end - $start, "UTF-8");
+                    $url = $feature["uri"] ?? null;
+
+                    if ($label && $url) {
+                        $replacements[] = [
+                            "start" => $start,
+                            "end" => $end,
+                            "replacement" => "[{$label}]({$url})",
+                        ];
+                    }
+                }
+            }
+        }
+
+        usort($replacements, fn($a, $b) => $b["start"] <=> $a["start"]);
+
+        foreach ($replacements as $r) {
+            $bytes =
+                mb_strcut($bytes, 0, $r["start"], "UTF-8") .
+                $r["replacement"] .
+                mb_strcut($bytes, $r["end"], null, "UTF-8");
+        }
+
+        return $bytes;
     }
 }
