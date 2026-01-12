@@ -5,6 +5,7 @@ Bluesky is a social media website built on the Authenticated Transfer Protocol (
 **This add-on lets you fetch the latest posts from a Bluesky account – the Bluesky feed of that account – and display it on your Statamic-powered website.** It fetches data from Bluesky and prepares a number of antlers tags for use in your templates, which you can use as simply (plain text) or extensively (replicating the Bluesky feed) as you prefer. Note that all styling is up to you, so you can make it look almost exactly like Bluesky itself or, better yet, make it harmoious with your own website.
 
 ### [View live demo &rarr;](https://vhbelvadi.com/bluesky-feed)
+#### [View raw code for live demo &rarr;](https://gist.github.com/vhbelvadi/ccb59db0430c5c555247846c7a449249)
 
 ***
 **Jump to:** [Features](https://github.com/vhbelvadi/bluesky-feed#features) • [Installation and removal](https://github.com/vhbelvadi/bluesky-feed#installation-and-features) • [Set-up and customisation](https://github.com/vhbelvadi/bluesky-feed#set-u-and-customisation) • [Customisation options](https://github.com/vhbelvadi/bluesky-feed#customisation--options) • [Customisation tags](https://github.com/vhbelvadi/bluesky-feed#customisation--tags) • [Edge cases](https://github.com/vhbelvadi/bluesky-feed#edge-cases) • [Examples](https://github.com/vhbelvadi/bluesky-feed#examples) • [Up next](https://github.com/vhbelvadi/bluesky-feed#up-next)
@@ -199,7 +200,7 @@ The following template assumes you have options set in your `.env` file and show
 
 ## Up next
 
-None of the example templates above show any styles. This is intentional, so the templating itself is clear. A minimally styled example can be found [on my website](http://vhbelvadi.com.test/bluesky-feed).
+None of the example templates above show any styles. This is intentional, so the templating itself is clear. A styled example can be found [on my website](http://vhbelvadi.com.test/bluesky-feed).
 
 If you have ideas or wish to propose features for this add-on, *please submit a pull request.*
 
