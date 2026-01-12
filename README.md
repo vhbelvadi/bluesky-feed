@@ -106,7 +106,7 @@ As in the above minimal set-up template, this add-on provides the two scopes `{{
 | `{{ type }}`                 | `{{ items }}`    | Returns `post`, `repost`, `reply` or `quote` type                             |
 | `{{ url }}`                  | `{{ items }}`    | Link to the post                                                              |
 | `{{ date }}`                 | `{{ items }}`    | Date and time when an original or reposted post was made                      |
-| `{{ original:poster }}`      | `{{ items }}`    | The handle of the poster to whom this post was in reply, quoting or reposting |
+| `{{ original:handle }}`      | `{{ items }}`    | The handle of the poster to whom this post was in reply, quoting or reposting |
 | `{{ images }}`               | `{{ items }}`    | Block/scope for displaying images (no images are shown by default)            |
 | `{{ thumb }}`                | `{{ images }}`   | URL of the image in original posts and reposts                                                              |
 | `{{ alt }}`                  | `{{ images }}`   | Alt text of the image                                                         |
