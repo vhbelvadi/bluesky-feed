@@ -1,55 +1,55 @@
 {
-    "name": "vhbelvadi/bluesky-feed",
-    "description": "Display recent Bluesky posts on a Statamic website",
-    "keywords": [
-        "statamic",
-        "bluesky",
-        "feed",
-        "tag"
-    ],
-    "homepage": "https://github.com/vhbelvadi/bluesky-feed",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "V.H. Belvadi",
-            "email": "hello@vhbelvadi.com",
-            "homepage": "https://vhbelvadi.com",
-            "role": "Developer"
-        }
-    ],
-	"type": "statamic-addon",
-    "autoload": {
-        "psr-4": {
-            "Vhbelvadi\\BlueskyFeed\\": "src"
-        }
+  "name": "vhbelvadi/bluesky-feed",
+  "description": "Display recent Bluesky posts on a Statamic website",
+  "keywords": [
+    "statamic",
+    "bluesky",
+    "feed",
+    "tag"
+  ],
+  "homepage": "https://github.com/vhbelvadi/bluesky-feed",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "V.H. Belvadi",
+      "email": "hello@vhbelvadi.com",
+      "homepage": "https://vhbelvadi.com",
+      "role": "Developer"
+    }
+  ],
+  "type": "statamic-addon",
+  "autoload": {
+    "psr-4": {
+      "Vhbelvadi\\BlueskyFeed\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Vhbelvadi\\BlueskyFeed\\Tests\\": "tests"
+    }
+  },
+  "require": {
+    "statamic/cms": "^5.0 || ^6.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^9.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "pixelfear/composer-dist-plugin": true
+    }
+  },
+  "extra": {
+    "statamic": {
+      "name": "Bluesky Feed",
+      "description": "Display recent Bluesky posts on a Statamic website"
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Vhbelvadi\\BlueskyFeed\\Tests\\": "tests"
-        }
-    },
-    "require": {
-        "statamic/cms": "^5.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^9.0"
-    },
-    "config": {
-        "allow-plugins": {
-            "pixelfear/composer-dist-plugin": true
-        }
-    },
-    "extra": {
-        "statamic": {
-            "name": "Bluesky Feed",
-            "description": "Display recent Bluesky posts on a Statamic website"
-        },
-        "laravel": {
-            "providers": [
-                "Vhbelvadi\\BlueskyFeed\\ServiceProvider"
-            ]
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "laravel": {
+      "providers": [
+        "Vhbelvadi\\BlueskyFeed\\ServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
